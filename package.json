@@ -1,0 +1,16 @@
+{
+  "name": "sample-2025-1",
+  "version": "0.0.1",
+  "description": "Лучший фронтенд-проект",
+  "main": "./server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server"
+  },
+  "author": "Преподаватели",
+  "license": "ISC",
+  "dependencies": {
+    "is-thirteen": "2.*.*",
+    "noop3": "13.8.1"
+  }
+}
