@@ -4,9 +4,8 @@ const express = require('express');
 const body = require('body-parser');
 const cookie = require('cookie-parser');
 const morgan = require('morgan');
-const uuid = require('uuid').v4;
 const path = require('path');
-const app = express()
+const app = express();
 
 app.use(morgan('dev'));
 app.use(express.static(path.resolve(__dirname, '..', 'public')));
@@ -114,11 +113,13 @@ app.post('/login', (req, res) => {
         return res.status(400).json({ error: 'Не верный E-Mail и/или пароль' });
     }
 
-    const id = uuid();
+    const id = crypto.randomUUID();
     ids[id] = email;
 
     res.cookie('podvorot', id, {
-        expires: new Date(Date.now() + 1000 * 60 * 10)
+        expires: new Date(Date.now() + 1000 * 60 * 10),
+        secure: true,
+        httpOnly: true
     });
     res.status(200).json({ id });
 });
